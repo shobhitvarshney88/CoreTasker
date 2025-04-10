@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1074384944818",
+    "project_id": "coretasker-31a4e",
+    "storage_bucket": "coretasker-31a4e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074384944818:android:e5f489b7e8804e397f13ab",
+        "android_client_info": {
+          "package_name": "com.coretasker.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074384944818-i5q10c03b11m70m8ggfrgs1nlt8n8tl6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coretasker.android",
+            "certificate_hash": "472a566b91bb38fedba33ecc0a5d8d38f7f661d4"
+          }
+        },
+        {
+          "client_id": "1074384944818-kqfiqv3rfjfutj0kvhn5pod1m7bquqqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYFsuhdn6Nc1RczdxkOR4oKFWMo2k1oKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074384944818-kqfiqv3rfjfutj0kvhn5pod1m7bquqqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
