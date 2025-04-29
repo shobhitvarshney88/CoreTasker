@@ -98,4 +98,9 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.logging.interceptor)
 
+    //Room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+
+
 }

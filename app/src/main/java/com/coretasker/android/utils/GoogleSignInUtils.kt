@@ -11,6 +11,8 @@ import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.NoCredentialException
+import com.coretasker.android.data.db.AppDatabase
+import com.coretasker.android.data.entity.UserEntity
 import com.google.android.gms.common.api.GoogleApi
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
@@ -25,10 +27,12 @@ class GoogleSignInUtils {
     companion object{
         fun doGoogleSignIn(context: Context,scope: CoroutineScope,launcher: ManagedActivityResultLauncher<Intent, ActivityResult>?,login:()->Unit){
             val credentialManager = CredentialManager.create(context)
+            val database = AppDatabase.getDatabase(context)
+            val userDao = database.userDao()
 
             val googleIdOption = GetGoogleIdOption.Builder()
                 .setFilterByAuthorizedAccounts(true)
-                .setServerClientId(/*baseContext.getString(R.string.default_web_client_id)*/"1074384944818-kqfiqv3rfjfutj0kvhn5pod1m7bquqqs.apps.googleusercontent.com")
+                .setServerClientId("1074384944818-kqfiqv3rfjfutj0kvhn5pod1m7bquqqs.apps.googleusercontent.com")
                 .build()
 
             val request = GetCredentialRequest.Builder()
@@ -46,6 +50,13 @@ class GoogleSignInUtils {
                                 val user = Firebase.auth.signInWithCredential(authCredential).await().user
                                 user?.let {
                                     if(it.isAnonymous.not()){
+                                        val userEntity = UserEntity(
+                                            uid = it.uid,
+                                            name = it.displayName,
+                                            email = it.email,
+                                            photoUrl = it.photoUrl?.toString()
+                                        )
+                                        userDao.insertUser(userEntity)
                                         login.invoke()
                                     }
                                 }
